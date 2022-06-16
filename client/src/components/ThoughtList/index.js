@@ -1,17 +1,16 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-const ThoughtList = ({ thoughts, title }) => {
+export default function ThoughtList({ thoughts, title }) {
   if (!thoughts.length) {
-    return <h3>No Thoughts Yet</h3>;
+    return <h3>No Thoughts Yet</h3>
   }
-
   return (
     <div>
       <h3>{title}</h3>
       {thoughts &&
-        thoughts.map(thought => (
-          <div key={thought._id} className="card mb-3">
+        thoughts.map((thought) => (
+          <div key={thought._id} className="card-mb-3">
             <p className="card-header">
               <Link
                 to={`/profile/${thought.username}`}
@@ -34,7 +33,5 @@ const ThoughtList = ({ thoughts, title }) => {
           </div>
         ))}
     </div>
-  );
-};
-
-export default ThoughtList;
+  )
+}

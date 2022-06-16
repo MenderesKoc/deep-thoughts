@@ -1,41 +1,41 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React from 'react'
 import {
+  ApolloProvider,
   ApolloClient,
   InMemoryCache,
-  ApolloProvider,
   createHttpLink,
-} from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
+} from '@apollo/client'
+import { setContext } from '@apollo/client/link/context'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Login from './pages/Login'
+import NoMatch from './pages/NoMatch'
+import SingleThought from './pages/SingleThought'
+import Profile from './pages/Profile'
+import Signup from './pages/Signup'
 
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Header from './components/Header'
+import Footer from './components/Footer'
 
-import Home from './pages/Home';
-import Login from './pages/Login';
-import NoMatch from './pages/NoMatch';
-import SingleThought from './pages/SingleThought';
-import Profile from './pages/Profile';
-import Signup from './pages/Signup';
+import Home from './pages/Home'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
-});
+})
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('id_token');
+  const token = localStorage.getItem('id_token')
   return {
     headers: {
       ...headers,
       authorization: token ? `Bearer ${token}` : '',
-    },
-  };
-});
+    }
+  }
+})
 
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
-});
+})
 
 function App() {
   return (
@@ -44,38 +44,21 @@ function App() {
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
           <div className="container">
-            <Routes>
-              <Route 
-                path="/" 
-                element={<Home />} 
-              />
-              <Route 
-                path="/login" 
-                element={<Login />} 
-              />
-              <Route 
-                path="/signup" 
-                element={<Signup />} 
-              />
-              <Route 
-                path="/profile" 
-                element={<Profile />} 
-              />
-              <Route 
-                path="/thought/:id" 
-                element={<SingleThought />} 
-              />
-              <Route 
-                path="*" 
-                element={<NoMatch />} 
-              />
-            </Routes>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={Signup} />
+              <Route exact path="/profile/:username?" component={Profile} />
+              <Route exact path="/thought/:id" component={SingleThought} />
+
+              <Route component={NoMatch} />
+            </Switch>
           </div>
           <Footer />
         </div>
       </Router>
     </ApolloProvider>
-  );
+  )
 }
 
-export default App;
+export default App
