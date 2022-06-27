@@ -1,5 +1,5 @@
-import React from 'react';
-import { Redirect, useParams } from 'react-router-dom';
+import React from "react";
+import { Navigate, useParams } from "react-router-dom";
 
 import ThoughtForm from '../components/ThoughtForm';
 import ThoughtList from '../components/ThoughtList';
