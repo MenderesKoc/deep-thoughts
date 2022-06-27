@@ -27,7 +27,7 @@ The application is a social media application called "Deep Thoughts," where user
 
 ---
 
-[![Deploy](https://deep-thoughts1.herokuapp.com/)](https://notetaker-pro.herokuapp.com)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://deep-thoughts1.herokuapp.com/)
 
 ## Images
 
