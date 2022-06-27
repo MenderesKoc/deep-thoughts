@@ -1,4 +1,4 @@
-# Note Taker
+# Deep Thoughts
 
 ## Description :
 
@@ -31,9 +31,9 @@ The application is a social media application called "Deep Thoughts," where user
 
 ## Images
 
-![ScreenShot](/public/assets/images/Screenshot2.png)
+![ScreenShot](/images/Screenshot2.png)
 
-![ScreenShot](/public/assets/images/Screenshot1.png)
+![ScreenShot](/images/Screenshot1.png)
 
 ---
 
